@@ -1,7 +1,7 @@
 package com.bridgelab.employeepayrollapp;
 
-import com.bridgelabz.employeepayrollapp.model.Employee;
-import com.bridgelabz.employeepayrollapp.repository.EmployeeRepository;
+import com.bridgelab.employeepayrollapp.Employee;
+import com.bridgelab.employeepayrollapp.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +16,13 @@ public class EmployeeServices {
 
     // Create Employee
     public Employee saveEmployee(Employee employee) {
+
         return employeeRepository.save(employee);
     }
 
     // Get Employee by ID
     public Optional<Employee> getEmployeeById(Long id) {
+
         return employeeRepository.findById(id);
     }
 
