@@ -1,4 +1,4 @@
-package com.bridgelab.employeepayrollapp;
+package com.bridgelab.employeepayrollapp.model;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,5 +1,5 @@
-package com.bridgelab.employeepayrollapp;
-import com.bridgelab.employeepayrollapp.Employee;
+package com.bridgelab.employeepayrollapp.repository;
+import com.bridgelab.employeepayrollapp.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

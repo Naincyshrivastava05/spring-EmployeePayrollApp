@@ -1,7 +1,7 @@
-package com.bridgelab.employeepayrollapp;
+package com.bridgelab.employeepayrollapp.services;
 
-import com.bridgelab.employeepayrollapp.Employee;
-import com.bridgelab.employeepayrollapp.EmployeeRepository;
+import com.bridgelab.employeepayrollapp.repository.EmployeeRepository;
+import com.bridgelab.employeepayrollapp.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
