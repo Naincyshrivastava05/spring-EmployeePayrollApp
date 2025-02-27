@@ -14,24 +14,24 @@ public class EmployeeServices {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    // Create Employee
+
+    //Creating Employee
     public Employee saveEmployee(Employee employee) {
 
         return employeeRepository.save(employee);
     }
-
-    // Get Employee by ID
+    //Find employee by ID
     public Optional<Employee> getEmployeeById(Long id) {
 
         return employeeRepository.findById(id);
     }
 
-    // List All Employees
+   //Getting all employee
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
-    // Update Employee
+    // Updating Employee data
     public Employee updateEmployee(Long id, Employee newEmployeeData) {
         return employeeRepository.findById(id).map(employee -> {
             employee.setName(newEmployeeData.getName());
@@ -41,7 +41,7 @@ public class EmployeeServices {
         }).orElse(null);
     }
 
-    // Delete Employee
+    // Deleting Employee data
     public boolean deleteEmployee(Long id) {
         if (employeeRepository.existsById(id)) {
             employeeRepository.deleteById(id);
