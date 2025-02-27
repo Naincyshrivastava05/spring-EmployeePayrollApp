@@ -3,7 +3,7 @@ package com.bridgelab.employeepayrollapp.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-
+//Using lombok
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
