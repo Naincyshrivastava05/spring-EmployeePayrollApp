@@ -34,7 +34,7 @@ public class EmployeeController {
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
-    public Optional<Employee> getEmployeeById(@PathVariable Long id) {
+    public Employee getEmployeeById(@PathVariable Long id) {
         return employeeService.getEmployeeById(id);
     }
 
