@@ -25,14 +25,8 @@ public class EmployeeServices implements IEmployeePayrollService{
 
 @Override
     public Employee saveEmployee(EmployeePayrollDTO employeeDTO) {
-        // Convert DTO to Entity
-        Employee newEmployee = new Employee();
-        newEmployee.setName(employeeDTO.getName());
-        newEmployee.setSalary(employeeDTO.getSalary());
-        newEmployee.setDepartment(employeeDTO.getDepartment());
-
-        // Save Employee to Database
-        return employeeRepository.save(newEmployee);
+    Employee employee = new Employee(employeeDTO);
+        return employeeRepository.save(employee);
     }
     //Find employee by ID
     @Override
@@ -49,17 +43,10 @@ public class EmployeeServices implements IEmployeePayrollService{
     // Updating Employee data
     @Override
     public Employee updateEmployee(long id, EmployeePayrollDTO employeeDTO) {
-        // Find employee by ID or throw an exception if not found
-        Employee existingEmployee = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + id));
-
-        // Update employee details
-        existingEmployee.setName(employeeDTO.getName());
-        existingEmployee.setSalary(employeeDTO.getSalary());
-        existingEmployee.setDepartment(employeeDTO.getDepartment());
-
-        // Save updated employee
-        return employeeRepository.save(existingEmployee);
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeePayrollException("Employee not found with id: " + id));
+        employee.updateEmployeePayrollModel(employeeDTO);
+        return employeeRepository.save(employee);
     }
 
 
