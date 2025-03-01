@@ -1,19 +1,12 @@
 package com.bridgelab.employeepayrollapp.dto;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ResponseDTO {
-    @NotEmpty(message = "Name cannot be empty")
-    @Pattern(regexp ="[A-Z][a-zA-Z\\s]+$", message = "Name should start with capital letter")
-    public String name;
-
-    @Min(value = 1000, message ="salary should be atleast 1000")
-    public  long salary;
-
-    public ResponseDTO(String name, long salary){
-        this.name = name;
-        this.salary = salary;
-    }
+    private String message;
+    private Object data;
 }
