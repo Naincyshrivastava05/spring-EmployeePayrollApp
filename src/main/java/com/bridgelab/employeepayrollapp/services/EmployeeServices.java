@@ -4,6 +4,7 @@ import com.bridgelab.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.bridgelab.employeepayrollapp.exception.EmployeePayrollException;
 import com.bridgelab.employeepayrollapp.repository.EmployeeRepository;
 import com.bridgelab.employeepayrollapp.model.Employee;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class EmployeeServices implements IEmployeePayrollService{
 
     @Autowired
