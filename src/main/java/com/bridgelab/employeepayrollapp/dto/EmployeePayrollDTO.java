@@ -1,4 +1,5 @@
 package com.bridgelab.employeepayrollapp.dto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.*;
@@ -19,18 +20,22 @@ public class EmployeePayrollDTO {
     public  long salary;
 
     @NotNull(message = "Gender cannot be null")
-    @Pattern(regexp = "Male|Female|Other", message = "Gender should be Male, Female, or Other")
+    @Pattern(regexp = "^(Male|Female)$", message = "Gender must be either Male or Female")
     private String gender;
 
     @NotNull(message = "Start Date cannot be null")
-    @PastOrPresent(message = "Start Date should be in the past or present")
+    @PastOrPresent(message = "Start Date must be a past or present date")
+    @JsonFormat(pattern = "dd-MM-yyyy")  // Converts input date format
     private LocalDate startDate;
 
+    @NotBlank(message = "Note cannot be empty")
     private String note;
 
+    @NotBlank(message = "Profile picture URL cannot be empty")
     private String profilePic;
 
-    @NotEmpty(message = "Department cannot be empty")
+    @NotNull(message = "Department cannot be null")
+    @Size(min = 1, message = "At least one department must be selected")
     private List<String> department;
 
 

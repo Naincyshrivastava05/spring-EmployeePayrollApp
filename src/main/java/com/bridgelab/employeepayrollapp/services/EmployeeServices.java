@@ -7,6 +7,7 @@ import com.bridgelab.employeepayrollapp.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,7 @@ public class EmployeeServices implements IEmployeePayrollService{
 
 @Override
     public Employee saveEmployee(EmployeePayrollDTO employeeDTO) {
+    validateStartDate(employeeDTO.getStartDate());
     Employee employee = new Employee(employeeDTO);
         return employeeRepository.save(employee);
     }
@@ -45,10 +47,15 @@ public class EmployeeServices implements IEmployeePayrollService{
     public Employee updateEmployee(long id, EmployeePayrollDTO employeeDTO) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EmployeePayrollException("Employee not found with id: " + id));
+        validateStartDate(employeeDTO.getStartDate());
         employee.updateEmployeePayrollModel(employeeDTO);
         return employeeRepository.save(employee);
     }
-
+    private void validateStartDate(LocalDate startDate) {
+        if (startDate.isAfter(LocalDate.now())) {
+            throw new EmployeePayrollException("Start Date cannot be in the future: " + startDate);
+        }
+    }
 
     // Deleting Employee data
     @Override
