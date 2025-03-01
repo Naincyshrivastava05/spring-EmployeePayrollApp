@@ -10,7 +10,7 @@ import java.util.List;
 //Repository Interface to hold Employee Payroll Records.
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-    @Query("SELECT e FROM EmployeePayrollModel e WHERE :department MEMBER OF e.department")
-    List<Employee> findEmployeesByDepartment(@Param("department") String department);
+    @Query("SELECT e FROM EmployeePayrollModel e WHERE 'Sales' MEMBER OF e.department")
+    List<Employee> findEmployeesInSalesDepartment();
 }
 

@@ -59,4 +59,9 @@ public class EmployeeController {
     public String deleteEmployee(@PathVariable Long id) {
         return employeeService.deleteEmployee(id) ? "Deleted Successfully" : "Employee Not Found";
     }
+    // ✅ API to get all employees in the Sales department
+    @GetMapping("/sales")
+    public List<Employee> getEmployeesInSalesDepartment() {
+        return employeeService.getEmployeesInSalesDepartment();
+    }
 }

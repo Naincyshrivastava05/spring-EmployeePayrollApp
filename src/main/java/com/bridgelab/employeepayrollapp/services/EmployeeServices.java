@@ -22,7 +22,9 @@ public class EmployeeServices implements IEmployeePayrollService{
     public EmployeeServices(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
-
+    public List<Employee> getEmployeesInSalesDepartment() {
+        return employeeRepository.findEmployeesInSalesDepartment();
+    }
 
     //Creating Employee
 
